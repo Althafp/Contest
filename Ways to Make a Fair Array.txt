@@ -1,0 +1,38 @@
+class Solution {
+    public int waysToMakeFair(int[] nums) {
+        int n = nums.length;
+        int fairCount = 0;
+
+        int totalEvenSum = 0, totalOddSum = 0;
+        for (int i = 0; i < n; i++) {
+            if (i % 2 == 0) { // Even index
+                totalEvenSum += nums[i];
+            } else { // Odd index
+                totalOddSum += nums[i];
+            }
+        }
+
+        int prefixEvenSum = 0, prefixOddSum = 0;
+
+        for (int i = 0; i < n; i++) {
+
+            if (i % 2 == 0) { // Even index
+                totalEvenSum -= nums[i];
+            } else { 
+                totalOddSum -= nums[i];
+            }
+
+            if (prefixEvenSum + totalOddSum == prefixOddSum + totalEvenSum) {
+                fairCount++;
+            }
+
+            if (i % 2 == 0) { 
+                prefixEvenSum += nums[i];
+            } else { 
+                prefixOddSum += nums[i];
+            }
+        }
+
+        return fairCount;
+    }
+}

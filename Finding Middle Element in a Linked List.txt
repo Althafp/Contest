@@ -1,0 +1,12 @@
+class Solution {
+    int getMiddle(Node head) {
+       ArrayList<Integer> al = new ArrayList<>();
+        Node curr = head;
+        while(curr!=null){
+            al.add(curr.data);
+            curr=curr.next;
+        }
+        return al.get(al.size()/2);
+    }
+        
+}
